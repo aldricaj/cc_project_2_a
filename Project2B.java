@@ -35,7 +35,7 @@ public class Project2B {
                 String nodeId = nodeIdStr[1];
                 String graphType = nodeIdStr[0];
                 boolean directed = graphType.equals("dir");
-                String graphType = directed ? "directed" : "undirected";
+                //String graphType = directed ? "directed" : "undirected";
                 String[] adjNodes = inputList[1].split(",");
                 
                 int numAdjNodes = adjNodes.length;
