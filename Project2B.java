@@ -68,19 +68,20 @@ public class Project2B {
         }
 
         public void cleanup(Context c) throws IOException, InterruptedException {
-            if (!undirectedMin == null)
-                c.write(new Text("undirected_min_connections"), toText(undirectedMin.toString()));
-            if (!undirectedMax == null)
-                c.write(new Text("undirected_max_connections"), toText(undirectedMax.toString()));
-            if (!directedMin == null)
-                c.write(new Text("directed_min_connections"), toText(directedMin.toString()));
-            if (!directedMax == null)
-                c.write(new Text("directed_max_connections"), toText(directedMax.toString()));
-            if (!directedLongestAdjList == null)
-                c.write(new Text("undirected_longest_adj"), toText(directedLongestAdjList.toString()));
-            if (!undirectedLongestAdjList == null)
-                c.write(new Text("directed_longest_adj"), toText(undirectedLongestAdjList.toString()));
-            
+            if (!c == null) {
+                if (!undirectedMin == null)
+                    c.write(new Text("undirected_min_connections"), toText(undirectedMin.toString()));
+                if (!undirectedMax == null)
+                    c.write(new Text("undirected_max_connections"), toText(undirectedMax.toString()));
+                if (!directedMin == null)
+                    c.write(new Text("directed_min_connections"), toText(directedMin.toString()));
+                if (!directedMax == null)
+                    c.write(new Text("directed_max_connections"), toText(directedMax.toString()));
+                if (!directedLongestAdjList == null)
+                    c.write(new Text("undirected_longest_adj"), toText(directedLongestAdjList.toString()));
+                if (!undirectedLongestAdjList == null)
+                    c.write(new Text("directed_longest_adj"), toText(undirectedLongestAdjList.toString()));
+            }
         }
 
         public Text toText(String s) {
