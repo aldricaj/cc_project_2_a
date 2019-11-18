@@ -28,10 +28,11 @@ public class Project2 {
 
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
         {
+            System.out.println(value.toString());
             String inline = value.toString();
             if (!inline.startsWith("#"))
             {
-                String [] inVals = inline.split("\t");
+                String[] inVals = inline.split("\t").split(" ");
                 String originNodeId = inVals[0];
                 String targetNodeId = inVals[1];
 
@@ -64,7 +65,6 @@ public class Project2 {
                 adjList = adjList + "," + val;
                 numAdjNodes++;
             }
-            adjList = adjList.substring(1);
             adjList = adjList + "|" + numAdjNodes;
             result.set(adjList);
             context.write(key, result);
@@ -75,7 +75,7 @@ public class Project2 {
     {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "Cloud Computing Adj List");
-        job.setJarByClass(Project2.class);
+        job.setJarByClass(adjList.class);
         job.setMapperClass(adjMapper.class);
         job.setCombinerClass(adjReducer.class);
         job.setReducerClass(adjReducer.class);
@@ -86,4 +86,3 @@ public class Project2 {
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
-
