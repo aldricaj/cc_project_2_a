@@ -132,7 +132,12 @@ public class Project2B {
                     }
                 }
             }
-            context.write(key, result);
+            context.write(key, toText(result));
+        }
+        public Text toText(String s) {
+            Text t = new Text();
+            t.set(s);
+            return t;
         }
     }
 
