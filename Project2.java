@@ -64,9 +64,9 @@ public class Project2 {
                 adjList = adjList + "," + val;
                 numAdjNodes++;
             }
+            adjList = adjList.substring(1); // remove starting comma
             adjList = adjList + "|" + numAdjNodes;
             result.set(adjList);
-            System.out.println(result.toString());
             context.write(key, result);
         }
     }
