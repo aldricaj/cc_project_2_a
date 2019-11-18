@@ -28,11 +28,10 @@ public class Project2 {
 
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
         {
-            System.out.println(value.toString());
             String inline = value.toString();
             if (!inline.startsWith("#"))
             {
-                String[] inVals = inline.split("\t").split(" ");
+                String[] inVals = inline.split("\t");
                 String originNodeId = inVals[0];
                 String targetNodeId = inVals[1];
 
@@ -67,6 +66,7 @@ public class Project2 {
             }
             adjList = adjList + "|" + numAdjNodes;
             result.set(adjList);
+            System.out.println(result.toString());
             context.write(key, result);
         }
     }
