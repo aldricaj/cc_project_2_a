@@ -21,7 +21,7 @@ public class Project2B {
     public static class adjMapper extends Mapper<Object, Text, Text, Text>
     {
 
-        private Pair<Integer, String> directedMax, directedMin, undirectedMax, undirectedMin;
+        private Pair<String, Integer> directedMax, directedMin, undirectedMax, undirectedMin;
         private Pair<String, String> directedLongestAdjList, undirectedLongestAdjList;
 
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
@@ -146,7 +146,7 @@ public class Project2B {
     {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "Cloud Computing Adj List");
-        job.setJarByClass(Project2.class);
+        job.setJarByClass(Project2B.class);
         job.setMapperClass(adjMapper.class);
         job.setCombinerClass(adjReducer.class);
         job.setReducerClass(adjReducer.class);
