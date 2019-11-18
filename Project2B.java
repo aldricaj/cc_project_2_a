@@ -35,7 +35,7 @@ public class Project2B {
                 String nodeId = nodeIdStr[1];
                 String graphType = nodeIdStr[0];
                 boolean directed = graphType.equals("dir");
-                String graphType = directed ? "directed" : "undirected";
+                //String graphType = directed ? "directed" : "undirected";
                 String[] adjNodes = inputList[1].split(",");
                 
                 int numAdjNodes = adjNodes.length;
@@ -68,12 +68,12 @@ public class Project2B {
         }
 
         public void cleanup(Context c) {
-            c.write("undirected_min_connections", toText(undirectedMin.toString()));
-            c.write("undirected_max_connections", toText(undirectedMax.toString()));
-            c.write("directed_min_connections", toText(directedMin.toString()));
-            c.write("directed_max_connections", toText(directedMax.toString()));
-            c.write("undirected_longest_adj", toText(directedLongestAdjList.toString()));
-            c.write("directed_longest_adj", toText(undirectedLongestAdjList.toString()));
+            c.write(new Text("undirected_min_connections"), toText(undirectedMin.toString()));
+            c.write(new Text("undirected_max_connections"), toText(undirectedMax.toString()));
+            c.write(new Text("directed_min_connections"), toText(directedMin.toString()));
+            c.write(new Text("directed_max_connections"), toText(directedMax.toString()));
+            c.write(new Text("undirected_longest_adj"), toText(directedLongestAdjList.toString()));
+            c.write(new Text("directed_longest_adj"), toText(undirectedLongestAdjList.toString()));
         }
 
         public Text toText(String s) {
@@ -107,32 +107,38 @@ public class Project2B {
         {
             String result;
             int resultValue;
+            String k = key.toString();
             for (Text v : values) {
                 String[] pair = v.toString().split("||");
 
-                if (key.contains("min_conn")) {
+                if (k.contains("min_conn")) {
                     int val = Integer.parseInt(pair[1]);
                     if (val < resultValue) {
                         result = "" + val;
                         resultValue = val;
                     }
                 }
-                else if (key.contains("max_conn")) {
+                else if (k.contains("max_conn")) {
                     int val = Integer.parseInt(pair[1]);
                     if (val > resultValue) {
                         result = "" + val;
                         resultValue = val;
                     }
                 }
-                else if (key.contains("longest")){
+                else if (k.contains("longest")){
                     int val = (pair[1].split(",").length);
                     if (val > resultValue) {
                         resultValue = val;
-                        result = v;
+                        result = v.toString();
                     }
                 }
             }
-            context.write(key, result);
+            context.write(key, toText(result));
+        }
+        public Text toText(String s) {
+            Text t = new Text();
+            t.set(s);
+            return t;
         }
     }
 
