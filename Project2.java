@@ -75,7 +75,7 @@ public class Project2 {
     {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf, "Cloud Computing Adj List");
-        job.setJarByClass(adjList.class);
+        job.setJarByClass(Project2.class);
         job.setMapperClass(adjMapper.class);
         job.setCombinerClass(adjReducer.class);
         job.setReducerClass(adjReducer.class);
