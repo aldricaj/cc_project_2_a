@@ -67,18 +67,15 @@ public class Project2B {
             }
         }
 
-        public void cleanup(Context c) throws IOException {
-            try {
-                c.write(new Text("undirected_min_connections"), toText(undirectedMin.toString()));
-                c.write(new Text("undirected_max_connections"), toText(undirectedMax.toString()));
-                c.write(new Text("directed_min_connections"), toText(directedMin.toString()));
-                c.write(new Text("directed_max_connections"), toText(directedMax.toString()));
-                c.write(new Text("undirected_longest_adj"), toText(directedLongestAdjList.toString()));
-                c.write(new Text("directed_longest_adj"), toText(undirectedLongestAdjList.toString()));
-            }
-            catch(IOException e) {
-                throw e;
-            }
+        public void cleanup(Context c) throws IOException, InterruptedException {
+
+            c.write(new Text("undirected_min_connections"), toText(undirectedMin.toString()));
+            c.write(new Text("undirected_max_connections"), toText(undirectedMax.toString()));
+            c.write(new Text("directed_min_connections"), toText(directedMin.toString()));
+            c.write(new Text("directed_max_connections"), toText(directedMax.toString()));
+            c.write(new Text("undirected_longest_adj"), toText(directedLongestAdjList.toString()));
+            c.write(new Text("directed_longest_adj"), toText(undirectedLongestAdjList.toString()));
+            
         }
 
         public Text toText(String s) {
@@ -110,7 +107,7 @@ public class Project2B {
                         Context context
                         ) throws IOException, InterruptedException 
         {
-            String result;
+            String result = "";
             int resultValue = -1;
             String k = key.toString();
             for (Text v : values) {
