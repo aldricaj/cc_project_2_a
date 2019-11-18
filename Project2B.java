@@ -35,26 +35,30 @@ public class Project2B {
                 String nodeId = nodeIdStr[1];
                 String graphType = nodeIdStr[0];
                 boolean directed = graphType.equals("dir");
-                String key = directed ? "directed" : "undirected";
+                String graphType = directed ? "directed" : "undirected";
                 String[] adjNodes = inputList[1].split(",");
                 
                 int numAdjNodes = adjNodes.length;
 
                 if (directed) {
-                    if(directedMax == null || numAdjNodes > directedMax.value.intValue()) {
+                    Integer directedMaxVal = directedMax.value;
+                    if(directedMax == null || numAdjNodes > directedMaxVal.intValue()) {
                         directedMax = new Pair(nodeId, numAdjNodes);
                         directedLongestAdjList = new Pair(nodeId, inputList[1]);
                     }
-                    if(directedMin == null || numAdjNodes < directedMin.value.intValue()) {
+                    Integer directedMinVal = directedMin.value;
+                    if(directedMin == null || numAdjNodes < directedMinVal.intValue()) {
                         directedMin = new Pair(nodeId, numAdjNodes);
                     }
                 }
                 else {
-                    if(undirectedMax == null || numAdjNodes > undirectedMax.value.intValue()) {
+                    Integer undirectedMaxVal = undirectedMax.value;
+                    if(undirectedMax == null || numAdjNodes > undirectedMaxVal.intValue()) {
                         undirectedMax = new Pair(nodeId, numAdjNodes);
                         undirectedLongestAdjList = new Pair(nodeId, inputList[1]);
                     }
-                    if(undirectedMin == null || numAdjNodes < undirectedMin.value.intValue()) {
+                    Integer undirectedMinVal = undirectedMin.value;
+                    if(undirectedMin == null || numAdjNodes < undirectedMinVal.intValue()) {
                         undirectedMin = new Pair(nodeId, numAdjNodes);
                     }
                 }
