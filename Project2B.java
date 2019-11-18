@@ -43,18 +43,18 @@ public class Project2B {
                 if (directed) {
                     if(directedMax == null || numAdjNodes > directedMax.value.intValue()) {
                         directedMax = new Pair(nodeId, numAdjNodes);
-                        directedLongestAdjList = new Pair(nodeId, inputList[1])
+                        directedLongestAdjList = new Pair(nodeId, inputList[1]);
                     }
-                    if(directedMin == null || numAdjNodes < directedMin..value.intValue()) {
+                    if(directedMin == null || numAdjNodes < directedMin.value.intValue()) {
                         directedMin = new Pair(nodeId, numAdjNodes);
                     }
                 }
                 else {
-                    if(undirectedMax == null || numAdjNodes > undirectedMax..value.intValue()) {
+                    if(undirectedMax == null || numAdjNodes > undirectedMax.value.intValue()) {
                         undirectedMax = new Pair(nodeId, numAdjNodes);
-                        undirectedLongestAdjList = new Pair(nodeId, inputList[1])
+                        undirectedLongestAdjList = new Pair(nodeId, inputList[1]);
                     }
-                    if(undirectedMin == null || numAdjNodes < undirectedMin..value.intValue()) {
+                    if(undirectedMin == null || numAdjNodes < undirectedMin.value.intValue()) {
                         undirectedMin = new Pair(nodeId, numAdjNodes);
                     }
                 }
@@ -82,13 +82,13 @@ public class Project2B {
             public K key;
             public V value;
 
-            public Pair(key, value) {
+            public Pair(K key, V value) {
                 this.key = key;
                 this.value = value;
             }
 
             public String toString() {
-                return key.toString() + '||' + value.toString();
+                return key.toString() + "||" + value.toString();
             }
         }
     }
