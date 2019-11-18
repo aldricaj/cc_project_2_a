@@ -67,7 +67,7 @@ public class Project2B {
             }
         }
 
-        public void cleanup(Context c) throws IOException e {
+        public void cleanup(Context c) throws IOException {
             try {
                 c.write(new Text("undirected_min_connections"), toText(undirectedMin.toString()));
                 c.write(new Text("undirected_max_connections"), toText(undirectedMax.toString()));
