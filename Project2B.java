@@ -28,31 +28,24 @@ public class Project2B {
                 String input = value.toString();
                 if (input != null && !input.startsWith("#"))
                 {
-                    /*
+                    
                     try {
                         // input is formatted as "undir_nodeId  neighborNode,neighborNode"
-                        System.err.append(input);
                         String[] inputList = input.split("\t");
                         String[] nodeIdStr = inputList[0].split("_");
                         String nodeId = nodeIdStr[1];
-                        System.err.append(nodeId);
                         String graphType = nodeIdStr[0];
-                        System.err.append(graphType);
                         boolean directed = graphType.equals("dir");
-                        System.err.append(directed+"");
                         String graphTypeText = directed ? "directed" : "undirected";
-                        System.err.append(graphTypeText);
-                        //String[] adjNodes = inputList[1].split(",");
+                        String[] adjNodes = inputList[1].split(",");
                         
-                        //int numAdjNodes = adjNodes.length;
+                        int numAdjNodes = adjNodes.length;
 
                         context.write(toText(graphTypeText), toText(nodeId + "||" + inputList[1] + '||' + numAdjNodes));
                     }
                     catch (Exception e){
                         context.write(e.toString())
                     }
-                    */
-                    context.write(toText("Apple"), value);
                 }
             }
             
