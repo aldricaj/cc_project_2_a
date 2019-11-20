@@ -52,7 +52,7 @@ public class Project2B {
                         context.write(e.toString())
                     }
                     */
-                    context.write(new Text("xx"), value)
+                    context.write(new Text("xx"), new Text("yy"));
                 }
             }
             
