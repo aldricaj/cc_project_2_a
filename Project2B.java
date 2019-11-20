@@ -40,12 +40,11 @@ public class Project2B {
                     System.err.append(directed+"");
                     String graphTypeText = directed ? "directed" : "undirected";
                     System.err.append(graphTypeText);
-                    String[] adjNodes = inputList[1].split(",");
+                    //String[] adjNodes = inputList[1].split(",");
                     
-                    int numAdjNodes = adjNodes.length;
-                    System.err.append(numAdjNodes);
+                    //int numAdjNodes = adjNodes.length;
 
-                    context.write(toText(graphTypeText), toText(nodeId + "||" + inputList[1] + '||' + numAdjNodes));
+                    context.write(toText(graphTypeText), toText(nodeId /*+ "||" + inputList[1] + '||' + numAdjNodes*/));
                 }
                 catch (Exception e){
                     context.write(e.toString())
