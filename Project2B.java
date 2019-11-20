@@ -113,7 +113,7 @@ public class Project2B {
             public String adjList;
             public String id;
             public int length;
-            public Row(String s) {
+            public Row(String s) throws Exception {
                 
                 System.out.println(s);
                 String[] vars = s.split("\t");
