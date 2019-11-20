@@ -28,24 +28,19 @@ public class Project2B {
                 String input = value.toString();
                 if (input != null && !input.startsWith("#"))
                 {
+                    // input is formatted as "undir_nodeId  neighborNode,neighborNode"
+                    String[] inputList = input.split("\t");
+                    String[] nodeIdStr = inputList[0].split("_");
+                    String nodeId = nodeIdStr[1];
+                    String graphType = nodeIdStr[0];
+                    boolean directed = graphType.equals("dir");
+                    String graphTypeText = directed ? "directed" : "undirected";
+                    String[] adjNodes = inputList[1].split(",");
                     
-                    try {
-                        // input is formatted as "undir_nodeId  neighborNode,neighborNode"
-                        String[] inputList = input.split("\t");
-                        String[] nodeIdStr = inputList[0].split("_");
-                        String nodeId = nodeIdStr[1];
-                        String graphType = nodeIdStr[0];
-                        boolean directed = graphType.equals("dir");
-                        String graphTypeText = directed ? "directed" : "undirected";
-                        String[] adjNodes = inputList[1].split(",");
-                        
-                        int numAdjNodes = adjNodes.length;
+                    int numAdjNodes = adjNodes.length;
 
-                        context.write(toText(graphTypeText), toText(nodeId + "||" + inputList[1] + "||" + numAdjNodes));
-                    }
-                    catch (Exception e){
-                        context.write(e.toString());
-                    }
+                    context.write(toText(graphTypeText), toText(nodeId + "||" + inputList[1] + "||" + numAdjNodes));
+                    
                 }
             }
             
