@@ -44,6 +44,11 @@ public class Project2B {
             }
             
         }
+        public Text toText(String s) {
+            Text t = new Text();
+            t.set(s);
+            return t;
+        }
 
     }
 
