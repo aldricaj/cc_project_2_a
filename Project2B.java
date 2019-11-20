@@ -79,7 +79,7 @@ public class Project2B {
             int resultValue = -1;
             String k = key.toString();
             for (Text v : values) {
-                Row r = new Row(v);
+                Row r = new Row(v.toString());
                 context.write(key, v);
             }
             
