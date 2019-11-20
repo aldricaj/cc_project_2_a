@@ -23,28 +23,33 @@ public class Project2B {
 
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
         {
-            System.out.println("Start");
+            System.err.append("Start");
             String input = value.toString();
             if (input != null && !input.startsWith("#"))
             {
-                // input is formatted as "undir_nodeId  neighborNode,neighborNode"
-                System.out.println(input);
-                String[] inputList = input.split("\t");
-                String[] nodeIdStr = inputList[0].split("_");
-                String nodeId = nodeIdStr[1];
-                System.out.println(nodeId);
-                String graphType = nodeIdStr[0];
-                System.out.println(graphType);
-                boolean directed = graphType.equals("dir");
-                System.out.println(directed+"");
-                String graphTypeText = directed ? "directed" : "undirected";
-                System.out.println(graphTypeText);
-                String[] adjNodes = inputList[1].split(",");
-                
-                int numAdjNodes = adjNodes.length;
-                System.out.println(numAdjNodes);
+                try {
+                    // input is formatted as "undir_nodeId  neighborNode,neighborNode"
+                    System.err.append(input);
+                    String[] inputList = input.split("\t");
+                    String[] nodeIdStr = inputList[0].split("_");
+                    String nodeId = nodeIdStr[1];
+                    System.err.append(nodeId);
+                    String graphType = nodeIdStr[0];
+                    System.err.append(graphType);
+                    boolean directed = graphType.equals("dir");
+                    System.err.append(directed+"");
+                    String graphTypeText = directed ? "directed" : "undirected";
+                    System.err.append(graphTypeText);
+                    String[] adjNodes = inputList[1].split(",");
+                    
+                    int numAdjNodes = adjNodes.length;
+                    System.err.append(numAdjNodes);
 
-                context.write(toText(graphTypeText), toText(nodeId + "||" + inputList[1] + '||' + numAdjNodes));
+                    context.write(toText(graphTypeText), toText(nodeId + "||" + inputList[1] + '||' + numAdjNodes));
+                }
+                catch (Exception e){
+                    context.write(e.toString())
+                }
             }
         }
 
