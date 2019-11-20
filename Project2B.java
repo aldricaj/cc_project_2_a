@@ -79,8 +79,8 @@ public class Project2B {
             public String id;
             public int length;
             public Row(String s) {
-                System.out.println(s);
                 String[] vars = s.split("|");
+                System.out.println(vars);
                 id = vars[0];
                 adjList = vars[1];
                 System.out.println(vars[0]);
