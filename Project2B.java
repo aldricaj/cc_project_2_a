@@ -23,6 +23,7 @@ public class Project2B {
 
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
         {
+            System.out.println("Start");
             String input = value.toString();
             if (input != null && !input.startsWith("#"))
             {
