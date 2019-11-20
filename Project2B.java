@@ -23,7 +23,6 @@ public class Project2B {
 
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
         {
-            System.err.append("Start");
             if (value != null) {
                 String input = value.toString();
                 if (input != null && !input.startsWith("#"))
@@ -80,11 +79,11 @@ public class Project2B {
             public String id;
             public int length;
             public Row(String s) {
-                System.err.append(s);
+                System.err.append(s + "\n");
                 String[] vars = s.split("|");
                 id = vars[0];
                 adjList = vars[1];
-                System.err.append(vars[2]);
+                System.err.append(vars[2] + "\n");
                 length = Integer.parseInt(vars[2]);
             }
         }
