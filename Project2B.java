@@ -38,7 +38,7 @@ public class Project2B {
                     
                     int numAdjNodes = adjNodes.length;
 
-                    context.write(toText(graphTypeText), toText(nodeId + "|" + inputList[1] + "|" + numAdjNodes));
+                    context.write(toText(graphTypeText), toText(nodeId + "." + inputList[1] + "." + numAdjNodes));
                     
                 }
             }
@@ -79,7 +79,7 @@ public class Project2B {
             public String id;
             public int length;
             public Row(String s) {
-                String[] vars = s.split("|");
+                String[] vars = s.split(".");
                 System.out.println(vars.length);
                 id = vars[0];
                 adjList = vars[1];
