@@ -38,7 +38,7 @@ public class Project2B {
                     
                     int numAdjNodes = adjNodes.length;
 
-                    context.write(toText(graphTypeText), toText(nodeId + "." + inputList[1] + "." + numAdjNodes));
+                    context.write(toText(graphTypeText), toText(nodeId + "\t" + inputList[1] + "\t" + numAdjNodes));
                     
                 }
             }
@@ -54,7 +54,8 @@ public class Project2B {
 
     public static class adjReducer extends Reducer<Text,Text,Text, Text> 
     {
-        private Text result = new Text();
+        private int maxConnectivity = -1, minConnectivity = 1_000_000_000_000;
+        private String longestAdjList = ""; 
 
         public void reduce(Text key, Iterable<Text> values,
                         Context context
@@ -79,7 +80,9 @@ public class Project2B {
             public String id;
             public int length;
             public Row(String s) {
-                String[] vars = s.split(".");
+                
+                System.out.println(s);
+                String[] vars = s.split("\t");
                 System.out.println(vars.length);
                 id = vars[0];
                 adjList = vars[1];
@@ -87,6 +90,7 @@ public class Project2B {
                 System.out.println(vars[1]);
                 System.out.println(vars[2]);
                 length = Integer.parseInt(vars[2]);
+                
             }
         }
     }
