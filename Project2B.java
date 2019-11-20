@@ -94,7 +94,7 @@ public class Project2B {
             public String id;
             public int length;
             public Row(String s) {
-                String[] vars = s.split('||')
+                String[] vars = s.split('||');
                 id = vars[0];
                 adjList = vars[1];
                 length = Integer.parseInt(vars[2]);
