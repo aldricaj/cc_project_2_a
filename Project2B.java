@@ -45,17 +45,12 @@ public class Project2B {
             
         }
 
-        public Text toText(String s) {
-            Text t = new Text();
-            t.set(s);
-            return t;
-        }
     }
 
     public static class adjReducer extends Reducer<Text,Text,Text, Text> 
     {
-        private int maxConnectivity = -1, minConnectivity = 9_000_000;
-        private String longestAdjList = ""; 
+        private Statistics directedStats = new Statistics("directed");
+        private Statistics undirectedStats = new Statistics("undirected");
 
         public void reduce(Text key, Iterable<Text> values,
                         Context context
@@ -64,16 +59,44 @@ public class Project2B {
             String result = "";
             int resultValue = -1;
             String k = key.toString();
+            Statistics statCollector = (key == "directed") ? directedStats : undirectedStats;
             for (Text v : values) {
                 Row r = new Row(v.toString());
-                context.write(key, v);
+                if (r.length > maxConnectivity) {
+                    maxConnectivity = r.length;
+                    longestAdjList = r.id + ":" + r.adjList;
+                }
+
+                if (r.length < minConnectivity) {
+                    minConnectivity = r.length;
+                }
             }
             
+        }
+        public void cleanup(Context c) throws IOException, InterruptedException{
+            directedStats.AddToContext(c);
+            undirectedStats.AddToContext(c);
         }
         public Text toText(String s) {
             Text t = new Text();
             t.set(s);
             return t;
+        }
+        private class Statistics {
+            public int maxConnectivity = -1;
+            public int minConnectivity = 9_000_000;
+            public String longestAdjList = "";
+            public String graphType;
+
+            public Statistics(String type) {
+                graphType = type;
+            }
+
+            public AddToContext(Context c) {
+                c.write(toText(graphType + "_max_connectivity:"), toText(minConnectivity.toString()));
+                c.write(toText(graphType + "_min_connectivity:"), toText(maxConnectivity.toString()));
+                c.write(toText(graphType + "_longestAdjList:"), toText(longestAdjList.toString()));
+            }
         }
         private class Row {
             public String adjList;
@@ -92,6 +115,12 @@ public class Project2B {
                 length = Integer.parseInt(vars[2]);
                 
             }
+        }
+        
+        public Text toText(String s) {
+            Text t = new Text();
+            t.set(s);
+            return t;
         }
     }
 
