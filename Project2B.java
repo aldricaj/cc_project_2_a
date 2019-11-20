@@ -59,7 +59,7 @@ public class Project2B {
             String result = "";
             int resultValue = -1;
             String k = key.toString();
-            Statistics statCollector = (key == "directed") ? directedStats : undirectedStats;
+            Statistics statCollector = (k == "directed") ? directedStats : undirectedStats;
             for (Text v : values) {
                 Row r = new Row(v.toString());
                 if (r.length > statCollector.maxConnectivity) {
