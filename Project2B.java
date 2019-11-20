@@ -54,7 +54,7 @@ public class Project2B {
 
     public static class adjReducer extends Reducer<Text,Text,Text, Text> 
     {
-        private int maxConnectivity = -1, minConnectivity = 9_000_000_000;
+        private int maxConnectivity = -1, minConnectivity = 9_000_000;
         private String longestAdjList = ""; 
 
         public void reduce(Text key, Iterable<Text> values,
