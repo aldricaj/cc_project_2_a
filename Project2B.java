@@ -66,14 +66,19 @@ public class Project2B {
             String k = key.toString();
             Statistics statCollector = (k == "directed") ? directedStats : undirectedStats;
             for (Text v : values) {
-                Row r = new Row(v.toString());
-                if (r.length > statCollector.maxConnectivity) {
-                    statCollector.maxConnectivity = r.length;
-                    statCollector.longestAdjList = r.id + ":" + r.adjList;
-                }
+                try {
+                    Row r = new Row(v.toString());
+                    if (r.length > statCollector.maxConnectivity) {
+                        statCollector.maxConnectivity = r.length;
+                        statCollector.longestAdjList = r.id + ":" + r.adjList;
+                    }
 
-                if (r.length < statCollector.minConnectivity) {
-                    statCollector.minConnectivity = r.length;
+                    if (r.length < statCollector.minConnectivity) {
+                        statCollector.minConnectivity = r.length;
+                    }
+                }
+                catch (Exception e) {
+                    continue;
                 }
             }
             
@@ -113,13 +118,15 @@ public class Project2B {
                 System.out.println(s);
                 String[] vars = s.split("\t");
                 System.out.println(vars.length);
-                id = vars[0];
-                adjList = vars[1];
-                System.out.println(vars[0]);
-                System.out.println(vars[1]);
-                System.out.println(vars[2]);
-                length = Integer.parseInt(vars[2]);
-                
+                if (vars.length == 3) {
+                    id = vars[0];
+                    adjList = vars[1];
+                    System.out.println(vars[0]);
+                    System.out.println(vars[1]);
+                    System.out.println(vars[2]);
+                    length = Integer.parseInt(vars[2]);
+                }
+                else throw new Exception();
             }
         }
         
