@@ -62,13 +62,13 @@ public class Project2B {
             Statistics statCollector = (key == "directed") ? directedStats : undirectedStats;
             for (Text v : values) {
                 Row r = new Row(v.toString());
-                if (r.length > maxConnectivity) {
-                    maxConnectivity = r.length;
-                    longestAdjList = r.id + ":" + r.adjList;
+                if (r.length > statCollector.maxConnectivity) {
+                    statCollector.maxConnectivity = r.length;
+                    statCollector.longestAdjList = r.id + ":" + r.adjList;
                 }
 
                 if (r.length < minConnectivity) {
-                    minConnectivity = r.length;
+                    statCollector.minConnectivity = r.length;
                 }
             }
             
