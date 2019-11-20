@@ -67,7 +67,7 @@ public class Project2B {
                     statCollector.longestAdjList = r.id + ":" + r.adjList;
                 }
 
-                if (r.length < minConnectivity) {
+                if (r.length < statCollector.minConnectivity) {
                     statCollector.minConnectivity = r.length;
                 }
             }
