@@ -80,10 +80,11 @@ public class Project2B {
             public String id;
             public int length;
             public Row(String s) {
+                System.err.append(s);
                 String[] vars = s.split("|");
                 id = vars[0];
                 adjList = vars[1];
-                 System.err.append(vars[2]);
+                System.err.append(vars[2]);
                 length = Integer.parseInt(vars[2]);
             }
         }
