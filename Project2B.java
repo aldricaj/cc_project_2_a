@@ -83,6 +83,8 @@ public class Project2B {
                 String[] vars = s.split("|");
                 id = vars[0];
                 adjList = vars[1];
+                System.out.println(vars[0]);
+                System.out.println(vars[1]);
                 System.out.println(vars[2]);
                 length = Integer.parseInt(vars[2]);
             }
