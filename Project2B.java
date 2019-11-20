@@ -78,9 +78,9 @@ public class Project2B {
             String k = key.toString();
             for (Text v : values) {
                 Row r = new Row(v);
-
+                context.write(key, v);
             }
-            context.write(key, values[0];
+            
         }
         public Text toText(String s) {
             Text t = new Text();
