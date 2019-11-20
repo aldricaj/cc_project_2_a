@@ -40,7 +40,7 @@ public class Project2B {
                 
                 int numAdjNodes = adjNodes.length;
 
-                context.write(toText(directed), toText(nodeId + "||" + inputList[1] + '||' + numAdjNodes));
+                context.write(toText(graphTypeText), toText(nodeId + "||" + inputList[1] + '||' + numAdjNodes));
             }
         }
 
