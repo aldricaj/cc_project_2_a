@@ -93,8 +93,8 @@ public class Project2B {
             }
 
             public void AddToContext(Context c) {
-                c.write(toText(graphType + "_max_connectivity:"), toText(minConnectivity.toString()));
-                c.write(toText(graphType + "_min_connectivity:"), toText(maxConnectivity.toString()));
+                c.write(toText(graphType + "_max_connectivity:"), toText(minConnectivity + ""));
+                c.write(toText(graphType + "_min_connectivity:"), toText(maxConnectivity + ""));
                 c.write(toText(graphType + "_longestAdjList:"), toText(longestAdjList.toString()));
             }
         }
