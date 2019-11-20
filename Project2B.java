@@ -23,9 +23,6 @@ public class Project2B {
 
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
         {
-            
-            context.write(toText("xx"), toText("yy"));
-            return;
             System.err.append("Start");
             if (value != null) {
                 String input = value.toString();
@@ -55,6 +52,7 @@ public class Project2B {
                         context.write(e.toString())
                     }
                     */
+                    context.write(toText("Apple"), value);
                 }
             }
             
