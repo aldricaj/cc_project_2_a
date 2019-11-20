@@ -30,15 +30,21 @@ public class Project2B {
             if (!input.startsWith("#"))
             {
                 // input is formatted as "undir_nodeId  neighborNode,neighborNode"
+                System.out.println(input);
                 String[] inputList = input.split("\t");
                 String[] nodeIdStr = inputList[0].split("_");
                 String nodeId = nodeIdStr[1];
+                System.out.println(nodeId);
                 String graphType = nodeIdStr[0];
+                System.out.println(graphType);
                 boolean directed = graphType.equals("dir");
+                System.out.println(directed+"");
                 String graphTypeText = directed ? "directed" : "undirected";
+                System.out.println(graphTypeText);
                 String[] adjNodes = inputList[1].split(",");
                 
                 int numAdjNodes = adjNodes.length;
+                System.out.println(numAdjNodes);
 
                 context.write(toText(graphTypeText), toText(nodeId + "||" + inputList[1] + '||' + numAdjNodes));
             }
@@ -48,20 +54,6 @@ public class Project2B {
             Text t = new Text();
             t.set(s);
             return t;
-        }
-
-        private class Pair<K, V> {
-            public K key;
-            public V value;
-
-            public Pair(K key, V value) {
-                this.key = key;
-                this.value = value;
-            }
-
-            public String toString() {
-                return key.toString() + "||" + value.toString();
-            }
         }
     }
 
