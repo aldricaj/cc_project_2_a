@@ -21,9 +21,6 @@ public class Project2B {
     public static class adjMapper extends Mapper<Object, Text, Text, Text>
     {
 
-        private Pair<String, Integer> directedMax, directedMin, undirectedMax, undirectedMin;
-        private Pair<String, String> directedLongestAdjList, undirectedLongestAdjList;
-
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException 
         {
             String input = value.toString();
