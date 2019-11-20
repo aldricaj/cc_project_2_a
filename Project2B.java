@@ -80,7 +80,7 @@ public class Project2B {
             public int length;
             public Row(String s) {
                 String[] vars = s.split("|");
-                System.out.println(vars);
+                System.out.println(vars.length);
                 id = vars[0];
                 adjList = vars[1];
                 System.out.println(vars[0]);
