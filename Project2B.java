@@ -77,11 +77,7 @@ public class Project2B {
             directedStats.AddToContext(c);
             undirectedStats.AddToContext(c);
         }
-        public Text toText(String s) {
-            Text t = new Text();
-            t.set(s);
-            return t;
-        }
+        
         private class Statistics {
             public int maxConnectivity = -1;
             public int minConnectivity = 9_000_000;
@@ -97,6 +93,11 @@ public class Project2B {
                 c.write(toText(graphType + "_min_connectivity:"), toText(maxConnectivity + ""));
                 c.write(toText(graphType + "_longestAdjList:"), toText(longestAdjList.toString()));
             }
+            private Text toText(String s) {
+            Text t = new Text();
+            t.set(s);
+            return t;
+        }
         }
         private class Row {
             public String adjList;
