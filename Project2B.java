@@ -74,7 +74,7 @@ public class Project2B {
                     statCollector = undirectedStats;
                     break;
                 default:
-                    String returnValue;
+                    String returnValue = "";
                     if (k.indexOf("min") > 0) {
                         int minValue = 9_000_000;
 
