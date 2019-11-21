@@ -130,7 +130,7 @@ public class Project2B {
             public int length;
             public Row(String s) throws Exception {
                 String[] vars = s.split("\t");
-                if (vars.length == 3) {
+                if (vars.length >= 3) {
                     id = vars[0];
                     adjList = vars[1];
                     length = Integer.parseInt(vars[2]);
