@@ -74,7 +74,47 @@ public class Project2B {
                     statCollector = undirectedStats;
                     break;
                 default:
-                    context.write(key, values[0]);
+                    String returnValue;
+                    if (key.contains("min")) {
+                        int minValue = 9_000_000;
+
+                        for (Text v1 in values) {
+                            String v = v1.toString();
+                            int n = Integer.parseInt(v);
+                            if (n < minValue) {
+                                minValue = n;
+                            }
+                        }
+                        returnValue = minValue + "";
+                    }
+                    else if (key.contains("max")) {
+                        int maxValue = 0;
+                        for (String v1 in values) {
+                            String v = v1.toString();
+                            int n = Integer.parseInt(v);
+                            if (n > maxValue) {
+                                maxValue = n;
+                            }
+                        }
+                        returnValue = maxValue + "";
+                    }
+                    else if (key.contains("longest")) {
+
+                        for (String v1 : values) {
+                            String v = v1.toString();
+                            String[] adjList1 = v.split(",");
+                            String[] adjList2 = returnValue.split(",");
+
+                            if (adjList1.length > adjList2.length) {
+                                returnValue = v;
+                            }
+                            
+                        }
+                    }
+                    
+                    c.write(key, toText(returnValue));
+
+
                     return;
             }
             
