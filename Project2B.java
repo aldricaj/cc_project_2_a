@@ -129,6 +129,7 @@ public class Project2B {
             public String id;
             public int length;
             public Row(String s) throws Exception {
+                System.out.println(s);
                 String[] vars = s.split("\t");
                 if (vars.length >= 3) {
                     id = vars[0];
