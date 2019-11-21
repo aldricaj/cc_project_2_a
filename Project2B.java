@@ -75,7 +75,7 @@ public class Project2B {
                     break;
                 default:
                     String returnValue;
-                    if (key.contains("min")) {
+                    if (key.indexOf("min") > 0) {
                         int minValue = 9_000_000;
 
                         for (Text v1 : values) {
@@ -87,7 +87,7 @@ public class Project2B {
                         }
                         returnValue = minValue + "";
                     }
-                    else if (key.contains("max")) {
+                    else if (key.indexOf("max") > 0) {
                         int maxValue = 0;
                         for (Text v1 : values) {
                             String v = v1.toString();
@@ -98,7 +98,7 @@ public class Project2B {
                         }
                         returnValue = maxValue + "";
                     }
-                    else if (key.contains("longest")) {
+                    else if (key.indexOf("longest") > 0) {
 
                         for (Text v1 : values) {
                             String v = v1.toString();
