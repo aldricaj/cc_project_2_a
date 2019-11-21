@@ -58,7 +58,7 @@ public class Project2B {
         private Statistics undirectedStats = new Statistics("undirected");
 
         public void reduce(Text key, Iterable<Text> values,
-                        Context context
+                        Context c
                         ) throws IOException, InterruptedException 
         {
             String result = "";
