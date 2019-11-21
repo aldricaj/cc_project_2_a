@@ -74,6 +74,7 @@ public class Project2B {
                     statCollector = undirectedStats;
                     break;
                 default:
+                    context.write(key, value);
                     return;
             }
             
