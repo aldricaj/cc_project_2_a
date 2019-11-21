@@ -89,7 +89,7 @@ public class Project2B {
                     }
                     else if (key.contains("max")) {
                         int maxValue = 0;
-                        for (String v1 : values) {
+                        for (Text v1 : values) {
                             String v = v1.toString();
                             int n = Integer.parseInt(v);
                             if (n > maxValue) {
@@ -100,7 +100,7 @@ public class Project2B {
                     }
                     else if (key.contains("longest")) {
 
-                        for (String v1 : values) {
+                        for (Text v1 : values) {
                             String v = v1.toString();
                             String[] adjList1 = v.split(",");
                             String[] adjList2 = returnValue.split(",");
@@ -148,7 +148,7 @@ public class Project2B {
                 }
 
             }
-            statCollector.AddToContext(context);
+            statCollector.AddToContext(c);
             
         }
         public void cleanup(Context c) throws IOException, InterruptedException{
