@@ -74,7 +74,7 @@ public class Project2B {
                     statCollector = undirectedStats;
                     break;
                 default:
-                    context.write(key, value);
+                    context.write(key, values[0]);
                     return;
             }
             
@@ -177,4 +177,3 @@ public class Project2B {
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }
 }
-
