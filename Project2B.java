@@ -79,10 +79,21 @@ public class Project2B {
                         System.out.println("Changing Min");
                         statCollector.minConnectivity = r.length;
                     }
+
+                    switch (k) {
+                        case "directed":
+                            directedStats = statCollector;
+                            break;
+                    
+                        case "undirected":
+                            undirectedStats = statCollector;
+                            break;
+                    }
                 }
                 catch (Exception e) {
                     continue;
                 }
+
             }
             
         }
@@ -117,16 +128,10 @@ public class Project2B {
             public String id;
             public int length;
             public Row(String s) throws Exception {
-                
-                System.out.println(s);
                 String[] vars = s.split("\t");
-                System.out.println(vars.length);
                 if (vars.length == 3) {
                     id = vars[0];
                     adjList = vars[1];
-                    System.out.println(vars[0]);
-                    System.out.println(vars[1]);
-                    System.out.println(vars[2]);
                     length = Integer.parseInt(vars[2]);
                 }
                 else throw new Exception();
