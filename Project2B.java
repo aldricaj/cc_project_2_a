@@ -96,11 +96,11 @@ public class Project2B {
                 }
 
             }
+            statCollector.AddToContext();
             
         }
         public void cleanup(Context c) throws IOException, InterruptedException{
-            directedStats.AddToContext(c);
-            undirectedStats.AddToContext(c);
+            return;
         }
         
         private class Statistics {
