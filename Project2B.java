@@ -65,7 +65,16 @@ public class Project2B {
             int resultValue = -1;
             String k = key.toString();
             System.out.println("Reduce!");
-            Statistics statCollector = (k == "directed") ? directedStats : undirectedStats;
+            Statistics statCollector;
+            switch(k) {
+                case "directed":
+                    statCollector = directedStats;
+                case "undirected":
+                    statCollector = undirectedStats;
+                default:
+                    return;
+            }
+            
             for (Text v : values) {
                 try {
                     Row r = new Row(v.toString());
