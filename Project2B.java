@@ -68,12 +68,15 @@ public class Project2B {
             for (Text v : values) {
                 try {
                     Row r = new Row(v.toString());
+                    System.out.println(v);
                     if (r.length > statCollector.maxConnectivity) {
+                        System.out.println("Changing Max");
                         statCollector.maxConnectivity = r.length;
                         statCollector.longestAdjList = r.id + ":" + r.adjList;
                     }
 
                     if (r.length < statCollector.minConnectivity) {
+                        System.out.println("Changing Min");
                         statCollector.minConnectivity = r.length;
                     }
                 }
