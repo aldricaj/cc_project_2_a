@@ -96,7 +96,7 @@ public class Project2B {
                 }
 
             }
-            statCollector.AddToContext();
+            statCollector.AddToContext(context);
             
         }
         public void cleanup(Context c) throws IOException, InterruptedException{
