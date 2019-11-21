@@ -11,11 +11,6 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-/**
-    Note that this code is derived from the adjacency list example posted on blackboard.
-    The most significant changes are to the map function
- */
-
 public class Project2B {
 
     public static class adjMapper extends Mapper<Object, Text, Text, Text>
@@ -166,8 +161,8 @@ public class Project2B {
             }
 
             public void AddToContext(Context c) throws IOException, InterruptedException{
-                c.write(toText(graphType + "_max_connectivity:"), toText(minConnectivity + ""));
-                c.write(toText(graphType + "_min_connectivity:"), toText(maxConnectivity + ""));
+                c.write(toText(graphType + "_max_connectivity:"), toText(maxConnectivity + ""));
+                c.write(toText(graphType + "_min_connectivity:"), toText(minConnectivity + ""));
                 c.write(toText(graphType + "_longestAdjList:"), toText(longestAdjList.toString()));
             }
             private Text toText(String s) {
