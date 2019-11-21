@@ -131,6 +131,9 @@ public class Project2B {
             public Row(String s) throws Exception {
                 System.out.println(s);
                 String[] vars = s.split("\t");
+                for (String s in vars) {
+                    System.out.println(s);
+                } 
                 if (vars.length >= 3) {
                     id = vars[0];
                     adjList = vars[1];
