@@ -78,7 +78,7 @@ public class Project2B {
                     if (key.contains("min")) {
                         int minValue = 9_000_000;
 
-                        for (Text v1 in values) {
+                        for (Text v1 : values) {
                             String v = v1.toString();
                             int n = Integer.parseInt(v);
                             if (n < minValue) {
@@ -89,7 +89,7 @@ public class Project2B {
                     }
                     else if (key.contains("max")) {
                         int maxValue = 0;
-                        for (String v1 in values) {
+                        for (String v1 : values) {
                             String v = v1.toString();
                             int n = Integer.parseInt(v);
                             if (n > maxValue) {
