@@ -69,8 +69,10 @@ public class Project2B {
             switch(k) {
                 case "directed":
                     statCollector = directedStats;
+                    break;
                 case "undirected":
                     statCollector = undirectedStats;
+                    break;
                 default:
                     return;
             }
